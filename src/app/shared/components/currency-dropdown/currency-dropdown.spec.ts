@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CurrencyDropdown } from './currency-dropdown';
+import { CurrencyDropdownComponent } from './currency-dropdown';
 
-describe('CurrencyDropdown', () => {
-  let component: CurrencyDropdown;
-  let fixture: ComponentFixture<CurrencyDropdown>;
+describe('CurrencyDropdownComponent', () => {
+  let component: CurrencyDropdownComponent;
+  let fixture: ComponentFixture<CurrencyDropdownComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CurrencyDropdown]
+      imports: [CurrencyDropdownComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(CurrencyDropdown);
+    fixture = TestBed.createComponent(CurrencyDropdownComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
