@@ -1,1 +1,12 @@
 /* Add application styles & imports to this file! */
+
+input {
+    padding: 4px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+label{
+    font-weight: bold;
+}

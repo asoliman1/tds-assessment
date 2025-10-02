@@ -1,0 +1,30 @@
+.container {
+    padding: 16px;
+}
+
+.selectors{
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.form-group {
+    margin-bottom: 20px;
+
+    label{
+        margin-right: 4px;
+    }
+}
+
+.conversion-result {
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+.text-danger {
+    color: red;
+}
+
+.switch-btn{
+    height: 30px;
+}
