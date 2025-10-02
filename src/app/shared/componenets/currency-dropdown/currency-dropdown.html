@@ -1,1 +1,18 @@
-<p>currency-dropdown works!</p>
+<div class="form-group">
+    <label for="currencyDropdown">{{ label() }}</label>
+
+    <select id="currencyDropdown" class="form-control" [value]="selectedCurrency()" (blur)="onBlur()"
+        (input)="onCurrencyChange($event)" [disabled]="isDisabled">
+        <option value="" disabled>{{loading() ? 'Loading...' : 'Select a currency'}}</option>
+        @for(currency of currencies(); track id+currency.code){
+        <option [value]="currency.short_code">
+            {{ currency.symbol }} - {{ currency.name }}
+        </option>
+        }
+
+    </select>
+
+    @if(error()){
+    {{error()}}
+    }
+</div>
