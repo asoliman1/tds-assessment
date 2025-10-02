@@ -70,6 +70,17 @@ export class CurrencyConverterComponent implements OnInit {
     }
   }
 
+  /*
+  * Exchange currencies.
+  */
+  onSwitch(): void {
+    const oldFromValue = this.formValue.from;
+    this.currencyForm.patchValue({
+      from: this.formValue.to,
+      to: oldFromValue
+    });
+  }
+
   private convertCurrency(formValue: ICurrencyConvertParams): void {
     this.loading.set(true);
     this.currencyService.convertCurrency(formValue).pipe(
