@@ -31,13 +31,14 @@ export class Api {
    */
   get<T>(url: string, params?: Record<string, any>): Observable<T> {
     const headers = this.createHeaders();
-    const httpParams = new HttpParams();
+    let httpParams = new HttpParams();
 
     // Convert the `params` object into HttpParams (if provided)
     if (params) {
       Object.keys(params).forEach((key) => {
         if (params[key] !== null && params[key] !== undefined) {
-          httpParams.set(key, params[key]);
+          // Override to get the latest data.
+          httpParams = httpParams.set(key, params[key]);
         }
       });
     }
