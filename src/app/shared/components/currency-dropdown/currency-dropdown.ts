@@ -41,16 +41,17 @@ export class CurrencyDropdownComponent implements OnInit, ControlValueAccessor {
 
   private fetchList() {
     this.loading.set(true);
-    this.currencyService.currencyList$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe(
-      (response) => {
+    this.currencyService.currencyList$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+      next: (response) => {
         this.error.set('');
         this.loading.set(false);
         this.currencies.set(response);
       },
-      (error) => {
+      error: (error) => {
         this.error.set(error.message);
         this.loading.set(false);
       },
+    }
     );
   }
 

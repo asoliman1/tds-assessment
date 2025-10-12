@@ -50,13 +50,13 @@ export class CurrencyConverterComponent implements OnInit {
     });
   }
 
-  private subscribeFormUpdates(){
+  private subscribeFormUpdates() {
     this.currencyForm.valueChanges.pipe(
-      takeUntilDestroyed(this.destroyRef), 
-      filter(()=> this.currencyForm.valid),
+      takeUntilDestroyed(this.destroyRef),
+      filter(() => this.currencyForm.valid),
       distinctUntilChanged((prev, curr) => JSON.stringify(prev) === JSON.stringify(curr)),
       debounceTime(500)
-      ).subscribe(this.onConvert.bind(this))
+    ).subscribe(this.onConvert.bind(this))
   }
 
   /**
@@ -85,19 +85,18 @@ export class CurrencyConverterComponent implements OnInit {
     this.loading.set(true);
     this.currencyService.convertCurrency(formValue).pipe(
       takeUntilDestroyed(this.destroyRef)
-      ).subscribe(
-      (response) => {
+    ).subscribe({
+      next: (response) => {
         this.error.set('');
         this.convertedValue.set(response);
         this.loading.set(false);
 
       },
-      (error) => {
+      error: (error) => {
         this.error.set(error.message);
         this.loading.set(false);
-      }, () => {
-        this.loading.set(false);
-      }
+      },
+    }
     );
   }
 
